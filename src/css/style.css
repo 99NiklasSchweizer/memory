@@ -1,0 +1,16 @@
+.brick {
+width: 100px;
+height: 100px;
+background: #ffee58;
+display: flex;
+justify-content: center;
+align-items: center;  
+}
+.brick img {
+  width: 60px;
+  height: 60px;
+}
+.memory{
+  width: 450px;
+  margin: 0 auto;
+}
