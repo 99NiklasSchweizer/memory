@@ -15,7 +15,7 @@ const turnBrick = (bricks, img) => {
       bricks.first = null;
       bricks.second = null;
     };
-    window.setTimeout(removeBrick, 1000);
+    window.setTimeout(removeBrick, 100);
   } else {
     const turnBackBrick = () => {
       const path = 'images/0.png';
@@ -26,7 +26,7 @@ const turnBrick = (bricks, img) => {
       bricks.first = null;
       bricks.second = null;
     };
-    window.setTimeout(turnBackBrick, 1000);
+    window.setTimeout(turnBackBrick, 100);
   }
 };
 
@@ -51,6 +51,9 @@ const renderMemory = (containerId, bricks) => {
       }
       const path = `images/${bricks.tiles[i]}.png`;
       img.setAttribute('src', path);
+      if (bricks.second !== null){
+        return;
+      }
       if (bricks.first === null) {
         bricks.first = img;
       } else {
