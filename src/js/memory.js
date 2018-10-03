@@ -6,14 +6,7 @@
 // TODO: Det ska enkelt gå att ladda in flera spel, genom att anropa en funktion flera gånger.
 // TODO: När spelet är slut ska sekunder sluta räknas
 // TODO: En enklare dokumentation i README.md som ska vara skriven i markup språket Markdown. Bör innehålla kortare information om vad som ligger i respektive fil samt vilka kommandon som ska köras för att starta utvecklingsserver samt hur man bygger en build.
-const memory = () => {
-  const rows = 4;
-  const columns = 4;
-
-  const tiles = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
-
-  const containerId = 'memory';
-
+const renderMemory = (containerId, bricks) => {
   const container = document.getElementById(containerId);
 
   const template = document.querySelector('#memory template');
@@ -24,7 +17,7 @@ const memory = () => {
 
   container.appendChild(div);
 
-  for (let i = 0; i < tiles.length; i++) {
+  for (let i = 0; i < bricks.tiles.length; i++) {
     const handleClick = event => {
       let img;
       if (event.target.tagName === 'DIV') {
@@ -33,13 +26,28 @@ const memory = () => {
         img = event.target;
       }
       console.log(img);
-      const path = `images/${tiles[i]}.png`;
+      const path = `images/${bricks.tiles[i]}.png`;
       img.setAttribute('src', path);
     };
     const brick = document.importNode(templateDiv.firstElementChild, true);
     brick.addEventListener('click', handleClick);
     div.appendChild(brick);
   }
+  
+}
+
+const memory = () => {
+  const renderOptions = {
+  rows: 4,
+  columns: 4
+  }
+  const bricks ={ 
+    tiles: [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
+  }
+
+  const containerId = 'memory';
+  
+  renderMemory(containerId, bricks);
 };
 
 export default memory;
