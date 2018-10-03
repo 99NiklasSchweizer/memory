@@ -17,3 +17,6 @@ margin: 5px;
   display: flex;
   flex-wrap: wrap;
 }
+.hidden{
+  visibility: hidden;
+}
