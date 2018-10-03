@@ -10,6 +10,8 @@ const memory = () => {
   const rows = 4;
   const columns = 4;
 
+  const tiles = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
+
   const containerId = 'memory';
 
   const container = document.getElementById(containerId);
@@ -22,8 +24,20 @@ const memory = () => {
 
   container.appendChild(div);
 
-  for (let i = 0; i < rows * columns; i++) {
+  for (let i = 0; i < tiles.length; i++) {
+    const handleClick = event => {
+      let img;
+      if (event.target.tagName === 'DIV') {
+        img = event.target.firstElementChild;
+      } else {
+        img = event.target;
+      }
+      console.log(img);
+      const path = `images/${tiles[i]}.png`;
+      img.setAttribute('src', path);
+    };
     const brick = document.importNode(templateDiv.firstElementChild, true);
+    brick.addEventListener('click', handleClick);
     div.appendChild(brick);
   }
 };
