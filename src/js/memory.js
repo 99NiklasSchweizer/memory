@@ -1,3 +1,5 @@
+import getMixedNumberArray from './helpers';
+
 // TODO: Ett fungerande memory-spel ska skapas som använder sig utav de bilder som finns ibland filerna. Spelet ska ha brickor uppdelade i 4 rader, med 4 brickor på varje rad.
 // TODO: Spelaren ska kunna se hur många gånger den försökt hitta par.
 // TODO: Spelaren ska kunna se hur många par den har.
@@ -19,7 +21,7 @@ const turnBrick = (bricks, img) => {
       bricks.first = null;
       bricks.second = null;
     };
-    window.setTimeout(removeBrick, 100);
+    window.setTimeout(removeBrick, 500);
   } else {
     const turnBackBrick = () => {
       const path = 'images/0.png';
@@ -30,7 +32,7 @@ const turnBrick = (bricks, img) => {
       bricks.first = null;
       bricks.second = null;
     };
-    window.setTimeout(turnBackBrick, 100);
+    window.setTimeout(turnBackBrick, 500);
   }
 };
 
@@ -80,7 +82,7 @@ const memory = () => {
   const bricks = {
     first: null,
     second: null,
-    tiles: [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]
+    tiles: getMixedNumberArray((renderOptions.rows * renderOptions.columns) / 2)
   };
 
   const containerId = 'memory';
