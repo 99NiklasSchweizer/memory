@@ -40,6 +40,7 @@ const turnBrick = (bricks, img, score, renderOptions, t) => {
       bricks.second = null;
       if ((renderOptions.rows * renderOptions.columns) / 2 === score.pairs) {
         const msgEL = document.getElementById('win-message');
+        clearInterval(t);
         msgEL.textContent = `Grattis! Du vann efter ${score.tries} försök och fick ${
           score.pairs
         } par på ${score.time} sekunder`;
