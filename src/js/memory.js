@@ -104,7 +104,7 @@ const renderMemory = (containerId, bricks, score, renderOptions) => {
   }
 };
 
-const memory = () => {
+const memory = containerId => {
   const renderOptions = {
     rows: 4,
     columns: 4
@@ -123,7 +123,6 @@ const memory = () => {
     startTime: Date.now()
   };
 
-  const containerId = 'memory';
   renderMemory(containerId, bricks, score, renderOptions);
 };
 
