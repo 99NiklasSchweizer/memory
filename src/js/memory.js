@@ -31,8 +31,8 @@ const turnBrick = (bricks, img, score, renderOptions, t) => {
       bricks.first.parentElement.classList.add('hidden');
       bricks.second.parentElement.classList.add('hidden');
 
-      score.pairs += 1;
-      score.tries += 1;
+      score.pairs++;
+      score.tries++;
       pairsEL.textContent = score.pairs;
       triesEL.textContent = score.tries;
 
@@ -53,7 +53,7 @@ const turnBrick = (bricks, img, score, renderOptions, t) => {
 
       bricks.first.setAttribute('src', path);
       bricks.second.setAttribute('src', path);
-      score.tries += 1;
+      score.tries++;
       triesEL.textContent = score.tries;
       bricks.first = null;
       bricks.second = null;
@@ -79,12 +79,8 @@ const renderMemory = (containerId, bricks, score, renderOptions) => {
 
   for (let i = 0; i < bricks.tiles.length; i++) {
     const handleClick = event => {
-      let img;
-      if (event.target.tagName === 'DIV') {
-        img = event.target.firstElementChild;
-      } else {
-        img = event.target;
-      }
+      const img = event.target.tagName === 'DIV' ? event.target.firstElementChild : event.target;
+
       const path = `images/${bricks.tiles[i]}.png`;
       img.setAttribute('src', path);
       if (bricks.second !== null) {
